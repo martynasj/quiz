@@ -6,8 +6,5 @@ import rootReducer from './root-reducer';
 export default function makeStore() {
   const enhancer = applyMiddleware(thunk);
   const store = createStore(rootReducer, undefined, enhancer);
-
-  console.log(store.getState());
-
   return store;
 }
