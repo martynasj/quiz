@@ -1,8 +1,10 @@
+import { combineReducers } from 'redux';
+
 const initialState = [
-  { title: 'Buy milk', id: '1' },
+  { title: 'What is the difference between HTML5 and HTML?', id: '1' },
 ];
 
-export default function(state = initialState, action) {
+function questions(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TODO': {
       return state;
@@ -12,3 +14,7 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+export default combineReducers({
+  questions,
+});

@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import TodoItem from './TodoItem';
+import * as selectors from './selectors';
+import QuestionCard from './QuestionCard';
 
 
 const List = (props) => {
-  const { todoList } = props;
+  const { questionsList } = props;
 
   return (
     <div>
       <ul>
-        {todoList.map(todoItem => <li key={todoItem.id}><TodoItem todo={todoItem} /></li>)}
+        {questionsList.map(question =>
+          <li key={question.id}><QuestionCard question={question} /></li>
+        )}
       </ul>
     </div>
   );
@@ -21,12 +24,12 @@ List.propTypes = {
 };
 
 List.defaultProps = {
-  todoList: [],
+  questionsList: [],
 };
 
 
 const container = connect(state => ({
-  todoList: state,
+  questionsList: selectors.selectQuestionsList(state),
 }));
 
 export default container(List);
